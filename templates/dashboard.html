@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+        <div class="mb-4">
+            <a href="/add" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Add User</a>
+            <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Logout</a>
+        </div>
+        <table class="w-full bg-white rounded shadow-md">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="p-2">ID</th>
+                    <th class="p-2">Username</th>
+                    <th class="p-2">Email</th>
+                    <th class="p-2">Role</th>
+                    <th class="p-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr class="border-t">
+                    <td class="p-2">{{ user.id }}</td>
+                    <td class="p-2">{{ user.username }}</td>
+                    <td class="p-2">{{ user.email }}</td>
+                    <td class="p-2">{{ user.role }}</td>
+                    <td class="p-2">
+                        <a href="/edit/{{ user.id }}" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition">Edit</a>
+                        <a href="/delete/{{ user.id }}" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
